@@ -15,5 +15,4 @@ networks:
   backend: {}
 
 volumes:
-  servervol:
-    name: servervol
+  servervol: {}
