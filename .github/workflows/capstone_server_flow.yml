@@ -48,6 +48,6 @@ jobs:
         run: |
           cd /home/ec2-user/DiceCapstonePart1Server
           pwd
-          sed -i 's/:\([^:]*\)$/:${{env.TAG}}/g' .env
+          echo "IMAGE_TAG=${{ secrets.docker_username }}/capstone_server:${{ env.TAG }}" > .env
           docker-compose up -d
 
