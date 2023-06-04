@@ -31,7 +31,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: umerarshad123/capstone_server:$TAG
+          tags: umerarshad123/capstone_server:${TAG}
 
   job2_deploy_image:
     runs-on: self-hosted
@@ -47,6 +47,6 @@ jobs:
         name: Pull and run updated docker image
         run: |
           cd /home/ec2-user/DiceCapstonePart1Server
-          sed -i 's/:\([^:]*\)$/:$TAG/g' .env
+          sed -i 's/:\([^:]*\)$/:${TAG}/g' .env
           docker-compose up -d
 
