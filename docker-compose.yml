@@ -2,8 +2,7 @@ version: '3'
 services:
   server:
     container_name: server
-    build:
-      context: .
+    image: ${IMAGE_TAG}
     ports:
       - 5000:5000
     volumes:
