@@ -47,6 +47,7 @@ jobs:
         name: Pull and run updated docker image
         run: |
           cd /home/ec2-user/DiceCapstonePart1Server
+          pwd
           sed -i 's/:\([^:]*\)$/:${{env.TAG}}/g' .env
           docker-compose up -d
 
