@@ -51,3 +51,18 @@ jobs:
           echo "IMAGE_TAG=${{ secrets.docker_username }}/capstone_server:${{ env.TAG }}" > .env
           docker-compose up -d
 
+  job3_notify_slack:
+    runs-on: ubuntu-latest
+    needs: job2_deploy_image
+    steps:
+      - uses: actions/checkout@v3
+      - 
+        name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_CHANNEL: random
+          SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
+          SLACK_MESSAGE: 'Post Content :rocket:'
+          SLACK_TITLE: Post Title
+          SLACK_USERNAME: umerm64
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
